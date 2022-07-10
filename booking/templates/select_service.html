@@ -1,0 +1,84 @@
+{% extends 'base.html' %}  
+{% block content %}
+
+    <main>
+
+        <div class="beide_seiten">
+            
+                <div class="our_services_container">
+                <h3 >Usere Services</h3>
+
+                    
+                    <table id="our_services_table" class="little_table">
+
+                            <tr>
+                                <th hidden>id</th>
+                                <th hidden>group</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+
+
+                            {% for service in services %}
+                            <tr data-href="{{service.id}}">
+                                <td hidden>{{service.id}}</td>
+                                <td hidden>{{service.group}}</td>
+                                <td>{{service.name}}</td>
+                                <td>{{service.dauer}}min</td>
+                                <td>{{service.preis}}€</td>
+                            </tr>
+                            {% endfor %}
+
+                    </table>
+                </div>
+
+            
+
+
+                <div class="selected_services_container">
+                    <h3 >Ihre Auswahl</h3>
+                    <table id="selected_services_table" class="little_table">
+
+                            <tr>
+                                <th hidden>id</th>
+                                <th hidden>group</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+
+                            {% for service in services_selected %}
+                            <tr data-href="delete_service/{{service.id}}/">
+                                <td hidden>{{service.id}}</td>
+                                <td hidden>{{service.group}}</td>
+                                <td>{{service.name}}</td>
+                                <td>{{service.dauer}}min</td>
+                                <td>{{service.preis}}€</td>
+                            </tr>
+                            {% endfor %}
+
+                    </table>
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    
+                </div>
+
+                
+            <div class="select_service_btn_container">
+                <a class="select_service_btn" href="{% url 'select_date' %}">Buchen</a>
+            </div>
+
+
+
+
+        </div>
+
+
+    </main>
+    
+{% endblock %}

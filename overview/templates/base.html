@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Nazar El-Saifi</title>
+
+    {% load static %}
+    <script defer src="{% static '/script.js' %}"></script>
+    <link rel="stylesheet" href="{% static '/style.css' %}">
+    
+</head>
+<body>
+    <nav class="navbar">
+        <div class="page_name_container">
+            <a href="{% url 'home' %}"><span class="name"></span></a>
+        </div>
+        <div class="navbar_container">
+            <ul class="navbar_list">
+                <li class="navbar_item">
+                    <a href="{% url 'contact' %}"><img src="https://img.icons8.com/material-outlined/24/000000/send-mass-email.png"/><span class="contactsite"></span></a>
+                </li>
+                <li class="navbar_item">
+                    <a href="{% url 'location' %}"><img src="https://img.icons8.com/material-outlined/24/000000/marker.png"/><span class="location"></span></a>
+                </li>
+                <li class="navbar_item">
+                    <button class="btn_nav"><a href="{% url 'select_service' %}"><span class="book"></span></a></button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    {% block content %}
+
+    {% endblock %}
+    <footer>
+
+        <div class="logo_container">
+            <img src="{% static '/img/nazar2.jpg' %}" alt="">
+        </div>
+
+        <div class="imp-pry_container">
+            <a href="">Impressum</a>
+            <a href=""><span class="privacy"></span></a>
+        </div>
+
+        <div class="contact_container">
+            <label for="contact_list"><span class="contact"></span></label>
+            <ul class="contact_list">
+                <li class="contact_list_item">
+                    <span class="street"></span>
+                </li>
+                <li class="contact_list_item">
+                    <span class="town"></span>
+                </li>
+                <li class="contact_list_item">
+                    <span class="number"></span>
+                </li>
+                <li class="contact_list_item">
+                    <span class="mail"></span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="social_container">
+            <img src="https://img.icons8.com/fluency/48/000000/instagram-new.png"/>
+        </div>
+
+    </footer>
+    
+</body>
+</html>

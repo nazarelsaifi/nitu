@@ -1,0 +1,65 @@
+{% extends 'base.html' %}  
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+{% load static %}
+    <main>    
+        <div class="homepage_container">
+            <div class="welcome_text_container">
+                <img src="{% static '/img/nazar2.jpg' %}" alt="">
+                <p>
+                    <span class="open"></span>
+                </p>
+            </div>
+            <div class="welcome_picture_container">
+                <div class="pic_container">
+                    <img src="{% static '' %}" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="service_container">
+            <div class="service-item_container" >
+                <h2><span class="service1"></span></h2>
+                <div class="picture_div" >
+                    <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/200/000000/external-archaeology-archaeology-flaticons-lineal-color-flat-icons-19.png"/>
+                </div>
+                <button><span class="read"></span></button>
+            </div>
+            <div class="service-item_container" >
+                <h2><span class="service2"></span></h2>
+                <div class="picture_div" >
+                    <img src="https://img.icons8.com/plasticine/200/000000/work.png"/>
+                </div>
+                <button><span class="read"></span></button>
+            </div>
+            <div class="service-item_container">
+                <h2><span class="service3"></span></h2>
+                <div class="picture_div" >
+                    <img src="https://img.icons8.com/external-victoruler-flat-victoruler/200/000000/external-family-baby-victoruler-flat-victoruler.png"/>
+                </div>
+                <button><span class="read"></span></button>
+            </div>
+            <div class="service-item_container" >
+                <h2><span class="service4"></span></h2>
+                <div class="picture_div" >
+                    <img src="https://img.icons8.com/officel/200/000000/fishing-pole.png"/>
+                </div>
+                <button><span class="read"></span></button>
+            </div>
+        </div>
+
+        <div class="homepage_container">
+            <div class="tutu_text_container">
+                <span class="text"></span>
+            </div>
+            <div class="tutu_picture_container">
+                <div class="p_div">
+                    <img src="{% static '/img/nazar3.jpg' %}" alt="">
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+{% endblock %}

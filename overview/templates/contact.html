@@ -1,0 +1,38 @@
+{% extends 'base.html' %}  
+{% block title %}Contact{% endblock %}
+
+    {% block content %}
+    {% load static %}
+    <main> 
+        <h1><span class="contactsite"></span></h1>
+        <div class="homepage_container">
+            <div class="form_container">
+                <form action="{% url 'customer_message' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form_input_1">
+                        <label for="fname"><span class="form1"></span></label>
+                        <input maxlength="255"  type="text" id="fname" name="firstname" placeholder="Dein Vorname..">
+        
+                        <label for="lname"><span class="form2"></span></label>
+                        <input maxlength="255"  type="text" id="lname" name="lastname" placeholder="Dein Nachname..">
+        
+                        <label for="email"><span class="form3"></span></label>
+                        <input maxlength="255" type="email" id="email" name="email" placeholder="Deine E-Mail Adresse.." required="required">
+                    </div>
+                    
+                    <div class="form_input_2">
+                        <label for="subject"><span class="form4"></span></label>
+                        <textarea maxlength="1000" id="subject" name="subject" placeholder="Schreib etwas.." required="required"></textarea>
+                    </div>
+    
+                    
+    
+                    <button class="btn2" type="submit" value="Submit"><span class="form5"></span></button>
+                </form>
+            </div>   
+        </div>
+        
+        
+
+    </main>
+    {% endblock %}

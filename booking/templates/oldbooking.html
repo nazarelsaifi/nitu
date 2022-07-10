@@ -1,0 +1,127 @@
+
+<main>
+    
+    <div class="service_booking_container">
+        
+        <div>
+            <h2 class="booking_h">Schritt 1/3: Service auswaehlen</h2>
+            <h3>Usere Services</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th hidden>id</th>
+                        <th hidden>group</th>
+                        <th>name</th>
+                        <th>duration</th>
+                        <th>price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for service in services %}
+                    <tr>
+                        <td hidden>{{service.id}}</td>
+                        <td hidden>{{service.group}}</td>
+                        <td>{{service.name}}</td>
+                        <td>{{service.duration}}min</td>
+                        <td>{{service.price}}€</td>
+                        <td><a href="{{service.id}}"> x</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    
+        <div>
+            <h3>Ihre Auswahl</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th hidden>id</th>
+                        <th hidden>group</th>
+                        <th>name</th>
+                        <th>duration</th>
+                        <th>price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for wahl in auswahl %}
+                    <tr>
+                        <td hidden>{{wahl.id}}</td>
+                        <td hidden>{{wahl.group}}</td>
+                        <td>{{wahl.name}}</td>
+                        <td>{{wahl.duration}}min</td>
+                        <td>{{wahl.price}}€</td>
+                        <td><a href="deleteS/{{wahl.id}}"> x</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+    </div>  
+        
+    <div class="date_booking_container">
+        <h2 class="booking_h">Schritt 2/3: Termin aussuchen</h2>
+        <table id="date_table">
+            <thead>
+                {% for key, value in week.items %}
+                <th>{{key}}</th>
+                {% endfor %}
+            </thead>
+            <tbody> 
+                {% for timepoint in time %}
+                <tr>
+                    {% for key, value in week.items %}
+                    <td><a href="{{value.year}}/{{value.month}}/{{value.day}}/{{timepoint}}">{{timepoint}}</a></td>
+                    {% endfor %} 
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+        <br>
+        <span>{{date_text|first}}</span>
+    </div>
+    
+        
+    
+    <div class="contact_booking_container">
+        <h2 class="booking_h">Schritt 3/3: Kontaktdaten angeben</h2>
+        <form action="." method="POST">
+            {% csrf_token %}
+            <label for="id">service</label>
+            <input type="text" name="id" value="ab">
+            <br>
+            <label for="duration">duration</label>
+            <input type="text" name="duration" value="2">
+            <br>
+            <label for="price">price</label>
+            <input type="number" name="price" value="2">
+            <br>
+            <label for="customerName">Your Name</label>
+            <input type="text" name="customerName" value="sadfa">
+            <br>
+            <label for="email">Your Email</label>
+            <input type="email" name="email" value="ab@d.de">
+            <br>
+            <label for="phone">Phone number</label>
+            <input type="number" name="phone" value="231423">
+            <br>
+            <br>
+            <input class="btn2" name="date" type="text" value="{{datum|first}}" hidden>
+            <p>Datum:{{datum|first}}</p>
+            
+        <button type="submit" {{dis|first}}>Book</button>
+
+
+        </form>
+    </div>
+    
+    <div>
+        <button id="back" class="btn2">back</button>
+        <button id="next" class="btn2">next</button>
+    </div>
+</main>
+

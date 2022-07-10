@@ -1,0 +1,185 @@
+{% extends 'base.html' %}  
+{% block content %}
+{% load static %}
+
+
+{% if user.is_authenticated %}
+<main>
+    
+<div class="beide_seiten">
+
+        <div class="linke_seite_container">
+            <h3>Termine</h3>
+
+            <div class="little_table_container">
+                <table id="booking_table" class="little_table">
+
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+
+
+                        {% for book in bookings %}
+                        <tr data-href="booking_{{booking.id}}">
+                            <td>{{book.nachname}}</td>
+                            <td>{{book.uhrzeit}}</td>
+                            <td><a href="deleteB/{{book.id}}/">delete</a></td>
+                        </tr>
+
+                        <div id="booking_{{booking.id}}" class="disabled">
+                            <p>ID: {{book.id}}</p>
+                            <p>Name: {{book.vorname}}</p>
+                            <p>nachname: {{book.nachname}}</p>
+                            <p>Email: {{book.email}}</p>
+                            <p>Nummer: {{book.nummer}}</p>
+                            <p>service: {{book.service}}</p>
+                            <p>preis: {{book.preis}}</p>
+                            <p>dauer: {{book.dauer}}</p>
+                            <p>Zeit: {{book.time}}</p>
+                            <a href=".">schliessen</a>
+                        </div>
+                        {% endfor %}
+
+                </table>
+
+            </div>
+        </div>
+
+
+        <div class="linke_seite_container">
+            <h3>Kundennachrichten</h3>
+
+            <div class="little_table_container">
+                <table class="little_table" id="message_table">
+
+                        <tr >
+                            <th hidden>id</th>
+                            <th hidden>vorname</th>
+                            <th hidden>nachname</th>
+                            <th ></th>
+                            <th hidden>subject</th>
+                            <th></th>
+                        </tr>
+
+        
+
+                        {% for message in messages %}
+                        <tr data-href="message_{{message.id}}">
+                            <td hidden>{{message.id}}</td>
+                            <td hidden>{{message.vorname}}</td>
+                            <td hidden>{{message.nachname}}</td>
+                            <td >{{message.email}}</td>
+                            <td hidden>{{message.subject}}</td>
+                            <td><a href="delete_customer_message/{{message.id}}/">delete</a></td>
+                        </tr>
+
+                        <div id="message_{{message.id}}" class="disabled">
+                            <p>ID: {{message.id}}</p>
+                            <p>Vorname: {{message.vorname}}</p>
+                            <p>Nachname: {{message.nachname}}</p>
+                            <p>Email: {{message.email}}</p>
+                            <p>Thema: {{message.thema}}</p>
+                            <a href=".">schliessen</a>
+                        </div>
+                        {% endfor %}
+
+                </table>
+
+            </div>
+            
+        </div>
+
+
+        <div class="rechte_seite_container">
+            <a class="btn2" href="{% url 'logout' %}">Log Out</a>
+            <a href="">Oeffnungszeiten verwalten</a>
+            <a href="">Mitarbeiter verwalten</a>
+            <a href="">Services verwalten</a>
+        </div>
+        
+        <div class="rechte_seite_container">
+            <h4>Services verwalten</h4>
+            <button id="service_hinzufuegen">service hinzufuegen</button>
+            <div class="little_table_container">
+
+                <table class="little_table" id="service_overview_table">
+
+                        <tr>
+                            <th hidden>id</th>
+                            <th hidden>group</th>
+                            <th></th>
+                            <th hidden>duration</th>
+                            <th hidden>price</th>
+                            <th></th>
+                        </tr>
+
+        
+  
+                        {% for service in services %}
+                        <tr data-href="service{{service.id}}">
+                            <td hidden>{{service.id}}</td>
+                            <td hidden>{{service.group}}</td>
+                            <td>{{service.name}}</td>
+                            <td hidden>{{service.duration}}</td>
+                            <td hidden>{{service.price}}</td>
+                            <td><a href="deleteS/{{service.id}}/">delete</a></td>
+                        </tr>
+
+                        <div id="service{{service.id}}" class="disabled">
+                            <p>ID: {{service.id}}</p>
+                            <p>Gruppe: {{service.gruppe}}</p>
+                            <p>Name: {{service.name}}</p>
+                            <p>Dauer: {{service.dauer}}</p>
+                            <p>Preis: {{service.preis}}</p>
+                            <a href=".">schliessen</a>
+                        </div>
+                        
+                        {% endfor %}
+
+                    
+        
+                </table>
+
+                
+            </div>
+
+
+            
+        </div>
+
+
+
+    
+    
+    <div class="disabled_form">
+        <label for="service_form">Service erstellen</label>
+        <form method="post" action=".">
+            {% csrf_token %}
+            <label for="gruppe">Gruppe</label>
+            <input type="text" name="gruppe">
+            <br>
+            <label for="name">Name</label>
+            <input type="text" name="name">
+            <br>
+            <label for="duration">Dauer</label>
+            <input type="number" name="dauer" id="">
+            <br>
+            <label for="price">Preis</label>
+            <input type="number" name="preis" id="">
+            <br>
+            <button type="submit">erstellen</button>
+            <a href=".">verwefen</a>
+        </form>
+    </div>
+
+</div>
+
+
+    
+
+    
+</main>
+{% endif %}
+{% endblock %}

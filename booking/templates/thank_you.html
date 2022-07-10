@@ -1,0 +1,12 @@
+{% extends 'base.html' %}  
+{% block content %}
+<main>
+    <div class="homepage_container">
+
+        thank you {{name}}!
+        <a href="{% url 'home' %}">Zurueck zur Homepage</a>
+    </div>
+    
+</main>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}  
+{% block content %}
+    <main>
+            <div class="beide_seiten">
+
+                <div class="date_booking_container">
+                    <table id="date_booking_table">
+                        <thead>
+                            {% for day in weekday %}
+                                <th>{{day}}</th>
+                            {% endfor %}
+            
+                        </thead>
+            
+                        <tbody>
+                            {% load index %}
+                            {% for i in x %}
+                                {% with forloop.counter0 as outer_counter %}
+                                <tr>
+                                    {% for time in week %}
+                                    <td data-href="{{ week|index:forloop.counter0| index:outer_counter }}/">{{ week|index:forloop.counter0| indexparsed:outer_counter }}</td>
+                                    {% endfor %}
+                                </tr>
+                                {% endwith %}
+                            {% endfor %}
+                        </tbody>
+                        <tfoot>
+    
+                        </tfoot>
+                    </table>
+                </div>
+    
+
+
+            </div>
+
+
+
+
+    </main>
+{% endblock %}

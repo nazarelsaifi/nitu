@@ -1,0 +1,83 @@
+{% extends 'base.html' %}  
+{% block content %}
+<main>
+    <div class="grid_form">
+            
+            <form class="customer_booking_form" action="{% url 'save_customer_data' %}" method="POST">
+                <h2 >Kontaktdaten angeben</h2>
+                {% csrf_token %}
+                <div class="form_info_container">
+                    <div class="grid_item_1">
+                        <p>Ihre Buchung am {{datestring}} fuer:
+                            {% for service in services_selected %}
+                            {{service.name}}
+                            {% endfor %}
+                        </p>
+                    </div>
+                    
+                </div>
+
+                <div class="form_customer_data_1_container">
+
+                    <div class="grid_item_1">
+
+                        <label for="vorname">Vorname</label>
+                        <input type="text" name="vorname" value="" required>
+
+                    </div>
+                    <div class="grid_item_2">
+
+                        <label for="nachname">Nachname</label>
+                        <input type="text" name="nachname" value="">
+                        
+                    </div>
+
+                </div>
+
+                <div class="form_customer_data_2_container">
+                    <div class="grid_item_3">
+                        <label for="nummer">Handynummer fuer Rueckfragen</label>
+                        <input type="number" name="nummer" value="">
+                    </div >
+
+                    <div class="grid_item_4">
+                        <label for="email">E-Mail Adresse</label>
+                        <input type="email" name="email" value="">
+                    </div>
+
+                </div>
+
+
+                <div class="form_customer_data_3_container">
+                        <label for="anmerkungen">Anmerkung zum Termin</label>
+                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                </div>
+
+                <div class="form_consent_container" >
+                    <div class="consent_item">
+                        <input type="checkbox" name="" id="">
+                        <p>Ich bin mit den AGB einverstanden. * </p>
+                    </div>
+                    <div class="consent_item">
+                        <input type="checkbox" name="" id="">
+                        <p>Ich habe die Datenschutzbestimmungen gelesen und akzeptiert. *  </p>
+                    </div>
+                    <div class="consent_item">
+                        <input type="checkbox" name="" id="">
+                        <p>Nitu-Nails darf mir per E-Mail/ SMS Terminerinnerungen, weitere Informationen oder z.B. Angebote zusenden (sog. Direktwerbung). </p>
+                    </div>
+
+                </div>
+
+                <input hidden type="text" name="service" value="{{name}}">
+                <input hidden type="text" name="dauer" value="{{dauer}}">
+                <input hidden type="number" name="preis" value="{{preis}}">
+                <input name="date" type="text" value="{{datestring}}" hidden>
+
+
+                <button class="btn2" type="submit">Buchen</button>
+
+            </form>
+        </div>
+</main>
+{% endblock %}
